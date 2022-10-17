@@ -11,3 +11,4 @@ $data = new DBConn();
 $names = new ClassicModels($data);
 $names->getLastName();
 $names->getFirstNames();
+

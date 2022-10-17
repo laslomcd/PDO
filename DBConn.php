@@ -1,21 +1,20 @@
 <?php
 
-class DBConn {
-    const SERVERNAME = 'localhost';
-    const USERNAME = 'root';
-    const PASSWORD = 'murphy#1';
-    const DBNAME = 'classicmodels';
 
+class DBConn {
 
     /**
      * @var PDO
      */
     public $conn;
 
+
+
     public function __construct()
     {
+        $parsed = parse_ini_file('credentials.env');
         try {
-            $this->conn = new PDO("mysql:dbname=" . self::DBNAME .";host=" . self::SERVERNAME ."", self::USERNAME, self::PASSWORD);
+            $this->conn = new PDO("mysql:dbname=" . $parsed['DBNAME'] .";host=" . $parsed['SERVERNAME'] ."", $parsed['USERNAME'], $parsed['PASSWORD']);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection Failed: " . $e->getMessage();
