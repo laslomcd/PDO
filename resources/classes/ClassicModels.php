@@ -10,20 +10,19 @@ class ClassicModels
         $this->db = $db;
     }
 
-    public function getLastName()
+    public function getAllLastNames()
     {
         $lastNames = $this->db->conn->query("SELECT lastName FROM employees");
         $lastNames->execute();
-        $results = $lastNames->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
+        return $lastNames->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getFirstNames()
+    public function getAllFirstNames()
     {
         $firstNames = $this->db->conn->query("SELECT firstName FROM employees");
         $firstNames->execute();
-        $results = $firstNames->fetchAll();
-        return $results;
+        return $firstNames->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
 
