@@ -14,8 +14,8 @@ class ClassicModels
     {
         $lastNames = $this->db->conn->query("SELECT lastName FROM employees");
         $lastNames->execute();
-        $results = $lastNames->fetchAll();
-        var_dump($results);
+        $results = $lastNames->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
     }
 
     public function getFirstNames()
@@ -23,7 +23,7 @@ class ClassicModels
         $firstNames = $this->db->conn->query("SELECT firstName FROM employees");
         $firstNames->execute();
         $results = $firstNames->fetchAll();
-        var_dump($results);
+        return $results;
     }
 
 
